@@ -1,0 +1,113 @@
+{
+  "title": "Dragon Quest",
+  "author": "Adventure Book Team",
+  "difficulty": "MEDIUM",
+  "description": "A dragon sleeps on a hoard of gold deep inside the Ember Cave. Steal its egg, befriend it or flee: every road has a price, and some of them are paid in blood.",
+  "genres": ["Fantasy"],
+  "tags": ["Dragons", "Cave", "Treasure"],
+  "estimatedTime": "15-20 min",
+  "sections": [
+    {
+      "id": 1,
+      "text": "You stand before the Ember Cave. Smoke curls out of its mouth and the ground trembles with every breath of the beast inside.",
+      "type": "BEGIN",
+      "options": [
+        { "description": "Walk in through the main entrance", "gotoId": 10 },
+        {
+          "description": "Climb the cliff to find another way in",
+          "gotoId": 20,
+          "consequence": { "type": "LOSE_HEALTH", "value": "3", "text": "A loose rock gives way and tears your hand open." }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "A young dragonling guards the main hall, its scales glowing like coals.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Fight it with your sword",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": "4", "text": "The dragonling burns you before it flees." }
+        },
+        { "description": "Sneak along the wall", "gotoId": 40 }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "The cliff ends on a narrow ledge. Behind a curtain of vines you find a tunnel and a small alcove.",
+      "type": "NODE",
+      "options": [
+        { "description": "Rest in the alcove", "gotoId": 50 },
+        { "description": "Follow the tunnel", "gotoId": 40 }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "The hall is empty now. A heavy door stands at its far end.",
+      "type": "NODE",
+      "options": [
+        { "description": "Open the door", "gotoId": 40 },
+        { "description": "Retreat to the entrance", "gotoId": 1 }
+      ]
+    },
+    {
+      "id": 40,
+      "text": "The great dragon sleeps on its hoard, its egg glittering between its claws. A river of lava cuts the chamber in two.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Steal the egg",
+          "gotoId": 80,
+          "consequence": { "type": "LOSE_HEALTH", "value": "6", "text": "The dragon wakes up and its tail throws you against the wall." }
+        },
+        { "description": "Wake the dragon and talk to it", "gotoId": 60 },
+        {
+          "description": "Leap across the lava to reach the biggest pile of gold",
+          "gotoId": 70,
+          "consequence": { "type": "LOSE_HEALTH", "value": "7", "text": "The heat of the lava burns you to the bone." }
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "text": "You find healing herbs growing in the alcove and eat them. You feel stronger.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Follow the tunnel",
+          "gotoId": 40,
+          "consequence": { "type": "GAIN_HEALTH", "value": "3", "text": "The herbs close your wounds." }
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "text": "The dragon listens to you, amused. It gives you a scale as a token of friendship and lets you leave. You are the first human to walk out of the Ember Cave as a friend.",
+      "type": "END"
+    },
+    {
+      "id": 70,
+      "text": "You land on the gold, bruised and burnt but alive, with more treasure than you can carry. The dragon sleeps on.",
+      "type": "END"
+    },
+    {
+      "id": 80,
+      "text": "The dragon roars and chases you through the tunnels with the egg in your arms.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Run for the exit",
+          "gotoId": 90,
+          "consequence": { "type": "LOSE_HEALTH", "value": "3", "text": "A burst of flames licks your back." }
+        },
+        { "description": "Give the egg back and beg for mercy", "gotoId": 60 }
+      ]
+    },
+    {
+      "id": 90,
+      "text": "You burst out into the daylight with the egg. The dragon stops at the cave mouth and watches you go. The egg is yours.",
+      "type": "END"
+    }
+  ]
+}
